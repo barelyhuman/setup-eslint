@@ -1,0 +1,23 @@
+{
+  "name": "@barelyhuman/setup-eslint",
+  "version": "0.1.2",
+  "license": "MIT",
+  "type": "module",
+  "main": "index.js",
+  "bin": "cli.js",
+  "devDependencies": {
+    "@typescript-eslint/parser": "^5.27.1",
+    "eslint": "^8.17.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.2",
+    "eslint-plugin-promise": "^6.0.0"
+  },
+  "packageManager": "pnpm@6.32.10",
+  "engines": {
+    "node": ">=16.14.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
