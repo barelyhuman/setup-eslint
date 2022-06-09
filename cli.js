@@ -1,20 +1,24 @@
 #!/usr/bin/env node
 
-import { execSync } from 'node:child_process'
-import fs from 'node:fs/promises'
-import { join } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { execSync } from "node:child_process";
+import fs from "node:fs/promises";
+import { join } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const templatePkg = fileURLToPath(new URL('package.json', import.meta.url))
-const templateRC = fileURLToPath(new URL('.eslintrc', import.meta.url))
+const templatePkg = fileURLToPath(new URL("package.json", import.meta.url));
+const templateRC = fileURLToPath(new URL(".eslintrc", import.meta.url));
 
-const pkg = JSON.parse(await fs.readFile(templatePkg))
-const rc = await fs.readFile(templateRC)
+const pkg = JSON.parse(await fs.readFile(templatePkg));
+const rc = await fs.readFile(templateRC);
 
-const rcPath = join('.eslintrc')
+const rcPath = join(".eslintrc");
 
-await fs.writeFile(rcPath, rc)
+await fs.writeFile(rcPath, rc);
 
-const deps = Object.keys(pkg.devDependencies)
+const ignoredDeps = "typescript";
 
-execSync(`npm i --save-dev ${deps.join(' ')}`, { stdio: 'inherit' })
+const deps = Object.keys(pkg.devDependencies).filter((x) =>
+    ignoredDeps.includes(x)
+);
+
+execSync(`npm i --save-dev ${deps.join(" ")}`, { stdio: "inherit" });

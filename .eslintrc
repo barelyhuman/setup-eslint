@@ -1,4 +1,5 @@
 {
+  "root": true,
   "parserOptions": {
     "ecmaVersion": 2022,
     "ecmaFeatures": {
@@ -6,21 +7,36 @@
     },
     "sourceType": "module"
   },
-  "plugins": ["import"],
   "env": {
     "es2021": true,
     "node": true
   },
-  "extends": ["standard"],
+  "plugins": ["@typescript-eslint", "import", "simple-import-sort"],
+  "extends": ["eslint:recommended"],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"], // Your TypeScript files extension
+
+      "extends": ["plugin:@typescript-eslint/recommended"],
+
+      "parserOptions": {
+        "tsconfigRootDir": "__dirname",
+        "project": ["./*/tsconfig.json"]
+      }
+    }
+  ],
   "rules": {
-    "import/order": "error",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "import/order": "off",
     "import/first": "error",
     "import/no-mutable-exports": "error",
     "import/no-unresolved": "off",
     "import/no-absolute-path": "off",
     "import/named": "off",
+    "semi": "off",
     "curly": ["error", "multi-or-nest", "consistent"],
-    "quotes": ["error", "single"],
+    "quotes": "off",
     "quote-props": ["error", "consistent-as-needed"],
     "array-callback-return": "error",
     "block-scoped-var": "error",
@@ -52,7 +68,6 @@
     ],
     "yoda": ["error", "never"],
     "space-before-blocks": ["error", "always"],
-    "operator-linebreak": ["error", "before"],
     "eqeqeq": [
       "error",
       "always",
@@ -60,22 +75,8 @@
         "null": "ignore"
       }
     ],
-    "indent": [
-      "error",
-      4,
-      {
-        "SwitchCase": 1,
-        "VariableDeclarator": 1,
-        "outerIIFEBody": 1
-      }
-    ],
-    "prefer-arrow-callback": [
-      "error",
-      {
-        "allowNamedFunctions": false,
-        "allowUnboundThis": true
-      }
-    ],
+    "indent": "off",
+    "prefer-arrow-callback": "off",
     "no-var": "error",
     "prefer-const": [
       "error",
