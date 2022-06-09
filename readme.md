@@ -13,7 +13,7 @@ It's easier to modify the original eslint config. Hence, this.
 npx @barelyhuman/setup-eslint
 ```
 
-> **Note:** This will override your `.eslintrc` file so make sure you create a backup file if you are running this in an ongoing project
+> **Note**: This will override your `.eslintrc` file so make sure you create a backup file if you are running this in an ongoing project
 
 # License
 
