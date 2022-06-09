@@ -17,8 +17,8 @@ await fs.writeFile(rcPath, rc);
 
 const ignoredDeps = "typescript";
 
-const deps = Object.keys(pkg.devDependencies).filter((x) =>
-    ignoredDeps.includes(x)
+const deps = Object.keys(pkg.devDependencies).filter(
+  (x) => !ignoredDeps.includes(x)
 );
 
 execSync(`npm i --save-dev ${deps.join(" ")}`, { stdio: "inherit" });
