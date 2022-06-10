@@ -13,6 +13,7 @@
   },
   "plugins": ["@typescript-eslint", "import", "simple-import-sort"],
   "extends": ["eslint:recommended"],
+  // To be edited as needed by the project
   "overrides": [
     {
       "files": ["*.ts", "*.tsx"], // Your TypeScript files extension
@@ -26,6 +27,16 @@
     }
   ],
   "rules": {
+    // conflicting rules with prettier
+    "function-paren-newline": "off",
+    "function-call-argument-newline": "off",
+    "arrow-parens": "off",
+    "comma-dangle": "off",
+    "comma-spacing": "off",
+    "semi": "off",
+    "quotes": "off",
+
+    // simple import and import
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
     "import/order": "off",
@@ -34,9 +45,9 @@
     "import/no-unresolved": "off",
     "import/no-absolute-path": "off",
     "import/named": "off",
-    "semi": "off",
+
+    // basics
     "curly": ["error", "multi-or-nest", "consistent"],
-    "quotes": "off",
     "quote-props": ["error", "consistent-as-needed"],
     "array-callback-return": "error",
     "block-scoped-var": "error",
